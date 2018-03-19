@@ -12,6 +12,9 @@
 		8DA85C71205AD16000F9CA10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA85C6F205AD16000F9CA10 /* Main.storyboard */; };
 		8DA85C73205AD16000F9CA10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DA85C72205AD16000F9CA10 /* Assets.xcassets */; };
 		8DA85C76205AD16000F9CA10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA85C74205AD16000F9CA10 /* LaunchScreen.storyboard */; };
+		8DA85C9F20600A2C00F9CA10 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA85C9C20600A2B00F9CA10 /* Icon-72.png */; };
+		8DA85CA020600A2C00F9CA10 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA85C9D20600A2B00F9CA10 /* Icon.png */; };
+		8DA85CA120600A2C00F9CA10 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA85C9E20600A2B00F9CA10 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		8DA85C72205AD16000F9CA10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DA85C75205AD16000F9CA10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DA85C77205AD16000F9CA10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DA85C9C20600A2B00F9CA10 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		8DA85C9D20600A2B00F9CA10 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		8DA85C9E20600A2B00F9CA10 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 		8DA85C6A205AD16000F9CA10 /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				8DA85C9B2060092C00F9CA10 /* Supporting */,
 				8DA85C6B205AD16000F9CA10 /* AppDelegate.swift */,
 				8DA85C6D205AD16000F9CA10 /* ViewController.swift */,
 				8DA85C6F205AD16000F9CA10 /* Main.storyboard */,
@@ -62,6 +69,16 @@
 				8DA85C77205AD16000F9CA10 /* Info.plist */,
 			);
 			path = TicTacToe;
+			sourceTree = "<group>";
+		};
+		8DA85C9B2060092C00F9CA10 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				8DA85C9C20600A2B00F9CA10 /* Icon-72.png */,
+				8DA85C9D20600A2B00F9CA10 /* Icon.png */,
+				8DA85C9E20600A2B00F9CA10 /* Icon@2x.png */,
+			);
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +141,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DA85C76205AD16000F9CA10 /* LaunchScreen.storyboard in Resources */,
+				8DA85CA120600A2C00F9CA10 /* Icon@2x.png in Resources */,
+				8DA85C9F20600A2C00F9CA10 /* Icon-72.png in Resources */,
+				8DA85CA020600A2C00F9CA10 /* Icon.png in Resources */,
 				8DA85C73205AD16000F9CA10 /* Assets.xcassets in Resources */,
 				8DA85C71205AD16000F9CA10 /* Main.storyboard in Resources */,
 			);
@@ -280,7 +300,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.rosehulman.castonkr.TicTacToe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -294,7 +314,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.rosehulman.castonkr.TicTacToe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
