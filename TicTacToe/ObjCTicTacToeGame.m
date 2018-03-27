@@ -51,61 +51,74 @@
     return gameBoard[index];
 }
 
-//func getGameString(_ indices: [Int] = [0, 1, 2, 3, 4, 5, 6, 7, 8]) -> String {
-//    var gameString = ""
-//    for index in indices {
-//        gameString += gameBoard[index].rawValue
-//    }
-//    return gameString
-//}
-//
-//var description: String {
-//    return "\(gameState.rawValue) Board: \(getGameString())"
-//}
-//
-//func pressedSquare( _ index: Int) {
-//    if gameBoard[index] != .none {
-//        return // This square is not empty
-//    }
-//    if gameState == .xTurn {
-//        gameBoard[index] = .x
-//        gameState = .oTurn
-//        checkForGameOver()
-//    }else if gameState == .oTurn {
-//        gameBoard[index] = .o
-//        gameState = .xTurn
-//        checkForGameOver()
-//    }
-//}
-
-- (void) pressedSquare: (NSInteger) index{
-    
+- (NSString*) getGameString {
+    NSMutableString* gameBoardString = [[NSMutableString alloc] init];
+    for (int i = 0; i < 9; i++) {
+        [gameBoardString appendString:[self getMarkTypeString:gameBoard[i]]];
+    }
+    return gameBoardString;
 }
 
-//
-//func checkForGameOver() {
-//    if !gameBoard.contains(.none) {
-//        gameState = .tieGame
-//    }
-//
-//    var linesOf3 = [String]()
-//    linesOf3.append(getGameString([0, 1, 2]))
-//    linesOf3.append(getGameString([3, 4, 5]))
-//    linesOf3.append(getGameString([6, 7, 8]))
-//    linesOf3.append(getGameString([0, 4, 8]))
-//    linesOf3.append(getGameString([2, 4, 6]))
-//    linesOf3.append(getGameString([0, 3, 6]))
-//    linesOf3.append(getGameString([1, 4, 7]))
-//    linesOf3.append(getGameString([2, 5, 8]))
-//
-//    for lineOf3 in linesOf3 {
-//        if lineOf3 == "XXX" {
-//            gameState = .xWin
-//            break
-//        } else if lineOf3 == "OOO" {
-//            gameState = .oWin
-//            break
-//        }
-//    }
-//}
+- (NSString*) getStringForLocation1: (int) index1
+                          location2: (int) index2
+                          location3: (int) index3 {
+    return [NSString stringWithFormat:@"%@%@%@",
+            [self getMarkTypeString:gameBoard[index1]],
+            [self getMarkTypeString:gameBoard[index2]],
+            [self getMarkTypeString:gameBoard[index3]]];
+}
+
+- (NSString*) description {
+    return [NSString stringWithFormat:@"%@ Board:%@",
+            [self getGameStateString],
+            [self getGameString]];
+}
+
+- (void) pressedSquare: (NSInteger) index{
+    if (gameBoard[index] != MarkTypeNone) {
+        return; // this square is not empty
+    }
+    
+    if (self.gameState == GameStateXTurn) {
+        gameBoard[index] = MarkTypeX;
+        self.gameState = GameStateOTurn;
+        [self checkForGameOver];
+    } else if (self.gameState == GameStateOTurn){
+        gameBoard[index] = MarkTypeO;
+        self.gameState = GameStateXTurn;
+        [self checkForGameOver];
+        
+    }
+}
+
+
+- (void) checkForGameOver {
+    if (![[self getGameString] containsString:@"-"]) {
+        self.gameState = GameStateTie;
+    }
+    NSMutableArray* linesof3 = [[NSMutableArray alloc] initWithCapacity:8];
+    [linesof3 addObject:[self getStringForLocation1:0 location2:1 location3:2]];
+    [linesof3 addObject:[self getStringForLocation1:3 location2:4 location3:5]];
+    [linesof3 addObject:[self getStringForLocation1:6 location2:7 location3:8]];
+    
+    [linesof3 addObject:[self getStringForLocation1:0 location2:3 location3:6]];
+    [linesof3 addObject:[self getStringForLocation1:1 location2:4 location3:7]];
+    [linesof3 addObject:[self getStringForLocation1:2 location2:5 location3:8]];
+    
+    [linesof3 addObject:[self getStringForLocation1:0 location2:4 location3:8]];
+    [linesof3 addObject:[self getStringForLocation1:2 location2:4 location3:6]];
+    
+//    NSLog(@"linesof3 = %@", linesof3);
+    
+    for (NSString* lineof3 in linesof3) {
+        if ([lineof3 isEqualToString: @"XXX"]) {
+            self.gameState = GameStateXWon;
+            break;
+        } else if ([lineof3 isEqualToString: @"OOO"]) {
+            self.gameState = GameStateOWon;
+            break;
+        }
+    }
+}
+
 @end

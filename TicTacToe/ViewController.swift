@@ -76,8 +76,8 @@ class ViewController: UIViewController {
             case .none:
                 button.setImage(nil, for: UIControlState.normal)
             }
-            
         }
+        print(game)
     }
     
 }
